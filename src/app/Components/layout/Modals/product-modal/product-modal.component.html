@@ -1,0 +1,69 @@
+<h2 mat-dialog-title>Product</h2>
+<mat-dialog-content>
+
+  <form [formGroup]="formProduct">
+    <mat-grid-list cols="1" rowHeight="80px">
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput autocomplete="off" formControlName="name">
+          <mat-icon matSuffix>fit_screen</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="idCategory">
+            <mat-option *ngFor="let item of categorys" [value]="item.idCategory">
+              {{item.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Stock</mat-label>
+          <input matInput autocomplete="off" formControlName="stock"  type="number">
+          <mat-icon matSuffix>edit_square</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput autocomplete="off" formControlName="price"  type="text">
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-form-field appearance="outline">
+          <mat-label>Status</mat-label>
+          <mat-select formControlName="isActive">
+            <mat-option value="1">Enable</mat-option>
+            <mat-option value="0">Disable</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </form>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+
+  <button mat-raised-button
+          color="primary"
+          [disabled]="formProduct.invalid"
+          (click)="upsertProduct()">
+    {{accionBoton}}
+  </button>
+
+  <button mat-raised-button mat-dialog-close color="warn">Back</button>
+
+</mat-dialog-actions>

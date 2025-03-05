@@ -1,0 +1,103 @@
+<h1 style="margin:20px 0px 0px 40px">Sale Report</h1>
+<mat-card style="margin: 20px 40px 40px 40px">
+
+
+  <mat-card-content class="dashboard-card-content">
+
+    <form class="example-form" [formGroup]="formGroup" (ngSubmit)="onSubmitForm()">
+      <mat-grid-list cols="4" rowHeight="80px">
+
+
+        <mat-grid-tile>
+          <mat-form-field appearance="fill">
+            <mat-label>Date Start</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dateStart" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+
+          <mat-form-field appearance="fill">
+            <mat-label>Date End</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dateEnd" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+          <button mat-raised-button color="primary" style="width: 80%;" [disabled]="formGroup.invalid"><mat-icon>search</mat-icon> Search</button>
+        </mat-grid-tile>
+
+      </mat-grid-list>
+
+
+    </form>
+
+    <button mat-raised-button color="warn"
+            [disabled]="reportList.length< 1"
+            (click)="exportarExcel()">
+      <mat-icon>feed</mat-icon>
+      Exportar Excel
+    </button>
+
+    <div class="mat-elevation-z2" style="margin-top:15px">
+      <table mat-table [dataSource]="dataSource">
+
+        <ng-container matColumnDef="timestamp">
+          <th mat-header-cell *matHeaderCellDef> Timestamp </th>
+          <td mat-cell *matCellDef="let element"> {{element.timestamp }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="idSale">
+          <th mat-header-cell *matHeaderCellDef> Number of Sale  </th>
+          <td mat-cell *matCellDef="let element"> {{element.idSale}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="paymentType">
+          <th mat-header-cell *matHeaderCellDef> Payment type </th>
+          <td mat-cell *matCellDef="let element"> {{element.paymentType}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="total">
+          <th mat-header-cell *matHeaderCellDef> Total </th>
+          <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="product">
+          <th mat-header-cell *matHeaderCellDef> Product </th>
+          <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef> Amount </th>
+          <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef> Price </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productTotal">
+          <th mat-header-cell *matHeaderCellDef> Product total </th>
+          <td mat-cell *matCellDef="let element"> {{element.productTotal}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                     showFirstLastButtons
+                     aria-label="Select page of periodic elements">
+      </mat-paginator>
+
+    </div>
+
+  </mat-card-content>
+
+</mat-card>
