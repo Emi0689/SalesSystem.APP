@@ -9,7 +9,6 @@
       <mat-grid-list cols="4" rowHeight="80px">
 
         <mat-grid-tile>
-
           <mat-form-field appearance="fill">
             <mat-label>Search by</mat-label>
             <mat-select formControlName="searchBy">
@@ -28,7 +27,6 @@
         </mat-grid-tile>
 
         <mat-grid-tile *ngIf="formGroup.value.searchBy=='date'">
-
           <mat-form-field appearance="fill">
             <mat-label>Start Date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="dateStart">
@@ -36,11 +34,9 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-
         </mat-grid-tile>
 
         <mat-grid-tile *ngIf="formGroup.value.searchBy=='date'">
-
           <mat-form-field appearance="fill">
             <mat-label>End Date</mat-label>
             <input matInput [matDatepicker]="picker" formControlName="dateEnd">
@@ -48,7 +44,6 @@
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
           </mat-form-field>
-
         </mat-grid-tile>
 
         <mat-grid-tile>

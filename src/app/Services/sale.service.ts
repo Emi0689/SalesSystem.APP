@@ -26,7 +26,7 @@ export class SaleService {
 
   report(startDate: string, endDate: string):Observable<ResponseApi>
   {
-    return this.http.get<ResponseApi>(`${this.urlApi}ReportstartDate=${startDate}&endDate=${endDate}`)
+    return this.http.get<ResponseApi>(`${this.urlApi}Report?startDate=${startDate}&endDate=${endDate}`)
   }
 
 }

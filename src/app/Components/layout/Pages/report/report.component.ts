@@ -27,7 +27,14 @@ export const MY_DATE_FORMATS = {
   selector: 'app-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.css'],
-  providers: [{provide: MAT_DATE_FORMATS, useValue: MAT_DATE_FORMATS}]
+  providers: [{provide: MAT_DATE_FORMATS,   useValue: {
+    display: {
+      dateInput: 'MM/DD/YYYY',
+      monthYearLabel: 'MMMM YYYY',
+      dateA11yLabel: 'LL',
+      monthYearA11yLabel: 'MMMM YYYY'
+    }
+  }}]
 })
 
 export class ReportComponent implements OnInit {
