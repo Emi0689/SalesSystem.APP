@@ -27,7 +27,7 @@ export class UserModalComponent implements OnInit {
     private modalCurrent: MatDialogRef<UserModalComponent>,
     @Inject(MAT_DIALOG_DATA) public userData: User,
     private fb: FormBuilder,
-    private UtilityService: UtilityService,
+    private _utilityService: UtilityService,
     private _rolServicio: RolService,
     private _userServicio: UserService
   )
@@ -90,52 +90,59 @@ export class UserModalComponent implements OnInit {
 
   upsertUser() {
 
-    const _user: User = {
-      idUser: this.userData == null ? 0 : this.userData.idUser,
-      fullName: this.formUser.value.fullName,
-      email: this.formUser.value.email,
-      idRol: this.formUser.value.idRol,
-      rolDescription : "",
-      password: this.formUser.value.password,
-      isActive: parseInt(this.formUser.value.isActive)
+    var user = this._utilityService.getUserSession();
+    if(user.rolDescription !== 'Administrador')
+    {
+      this._utilityService.showAlert("Only the administrator user can create or update user.", "Oops!");
     }
+    else
+    {
+      const _user: User = {
+        idUser: this.userData == null ? 0 : this.userData.idUser,
+        fullName: this.formUser.value.fullName,
+        email: this.formUser.value.email,
+        idRol: this.formUser.value.idRol,
+        rolDescription : "",
+        password: this.formUser.value.password,
+        isActive: parseInt(this.formUser.value.isActive)
+      }
 
+      if (this.userData) {
 
-    if (this.userData) {
+        this._userServicio.update(_user).subscribe({
+          next: (data) => {
 
-      this._userServicio.update(_user).subscribe({
-        next: (data) => {
-
-          if (data.status) {
-            this.UtilityService.showAlert("The user was updated successfully.", "Done!");
-            this.modalCurrent.close('Updated')
-          } else {
-            this.UtilityService.showAlert("The user could not be updated.", "Error");
+            if (data.status) {
+              this._utilityService.showAlert("The user was updated successfully.", "Done!");
+              this.modalCurrent.close('Updated')
+            } else {
+              this._utilityService.showAlert("The user could not be updated.", "Error");
+            }
+          },
+          error: (e) => {
+            console.log(e)
+          },
+          complete: () => {
           }
-        },
-        error: (e) => {
-          console.log(e)
-        },
-        complete: () => {
-        }
-      })
-    }
-    else {
-      this._userServicio.create(_user).subscribe({
-        next: (data) => {
-          if (data.status) {
-            this.UtilityService.showAlert("The user was created successfully.", "Done");
-            this.modalCurrent.close('Created')
-          } else {
-            this.UtilityService.showAlert("The user could not be created.", "Error");
+        })
+      }
+      else {
+        this._userServicio.create(_user).subscribe({
+          next: (data) => {
+            if (data.status) {
+              this._utilityService.showAlert("The user was created successfully.", "Done");
+              this.modalCurrent.close('Created')
+            } else {
+              this._utilityService.showAlert("The user could not be created.", "Error");
+            }
+          },
+          error: (e) => {
+          },
+          complete: () => {
           }
-        },
-        error: (e) => {
-        },
-        complete: () => {
-        }
-      })
-    }
+        })
+      }
+  }
   }
 
 }

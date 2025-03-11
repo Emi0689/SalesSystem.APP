@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  endpoint: "https://localhost:44345/api/"
+  endpoint: "https://emiliofilotti-apinet8-hqeheeddf7h9etdb.canadacentral-01.azurewebsites.net/"
 };
 
 /*

@@ -85,37 +85,46 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   deleteUser(user: User) {
-   Swal.fire({
-    title: 'Do you want to delete the user?',
-    text: user.fullName,
-    icon: 'warning',
-    confirmButtonColor: '#3085d6',
-    confirmButtonText: 'Yes, delete',
-    showCancelButton: true,
-    cancelButtonColor: '#d33',
-    cancelButtonText: 'No, back'
-    }).then(result => {
+    var userCurrent = this._utilityService.getUserSession();
+    debugger;
+    if(userCurrent.rolDescription != 'Administrador')
+    {
+      this._utilityService.showAlert("Only the administrator user can create or update user.", "Oops!");
+    }
+    else
+    {
+      Swal.fire({
+      title: 'Do you want to delete the user?',
+      text: user.fullName,
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete',
+      showCancelButton: true,
+      cancelButtonColor: '#d33',
+      cancelButtonText: 'No, back'
+      }).then(result => {
 
-      if (result.isConfirmed) {
+        if (result.isConfirmed) {
 
-        this._userService.delete(user.idUser).subscribe({
-          next: (data) => {
+          this._userService.delete(user.idUser).subscribe({
+            next: (data) => {
 
-            if (data.status) {
-              this._utilityService.showAlert("The user was deleted.", "Done!")
-              this.showUsers();
-            } else {
-              this._utilityService.showAlert("The user could not be deleted.", "Error");
+              if (data.status) {
+                this._utilityService.showAlert("The user was deleted.", "Done!")
+                this.showUsers();
+              } else {
+                this._utilityService.showAlert("The user could not be deleted.", "Error");
+              }
+            },
+            error: (e) => {
+            },
+            complete: () => {
             }
-          },
-          error: (e) => {
-          },
-          complete: () => {
-          }
-        })
+          })
 
-      }
+        }
 
-    });
+      });
+    }
   }
 }
