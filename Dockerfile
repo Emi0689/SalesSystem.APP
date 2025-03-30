@@ -1,4 +1,4 @@
-FROM node:16 as build-step
+FROM node:16 as build
 
 RUN mkdir -p /app
 
@@ -14,4 +14,4 @@ RUN npm run build -- --configuration production && ls -l /app/dist/SalesSystemAP
 
 FROM nginx:alpine
 
-COPY --from=build-step /app/dist/SalesSystemAPP /usr/share/nginx/html
+COPY --from=build /app/dist/SalesSystemAPP /usr/share/nginx/html
