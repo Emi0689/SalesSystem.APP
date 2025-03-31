@@ -37,8 +37,8 @@ jobs:
       # 🔥 Construcción y subida de la imagen usando el Dockerfile
       - name: Build and Push Docker Image
         run: |
-          docker build -t ${{ secrets.emi0689 }}/saleapp:latest -f Dockerfile .
-          docker push ${{ secrets.emi0689 }}/saleapp:latest
+          docker build -t ${{ secrets.DOCKER_USER  }}/saleapp:latest -f Dockerfile .
+          docker push ${{ secrets.DOCKER_USER  }}/saleapp:latest
 
   deploy:
     runs-on: ubuntu-latest
