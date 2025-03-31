@@ -62,5 +62,5 @@ jobs:
       - name: Deploy Docker Image to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'SaleAPP'
+          app-name: 'saleapp'
           images: '${{ secrets.DOCKER_USER }}/saleapp:latest'
