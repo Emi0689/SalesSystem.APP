@@ -62,4 +62,4 @@ jobs:
             --name saleapp \
             --resource-group Porfolio-Candada \
             --image ${{ secrets.DOCKER_USER }}/saleapp:latest \
-            --registry-server ${{ secrets.DOCKER_USER  }}/saleapp:latest
+            --registry-server docker.io
