@@ -58,7 +58,7 @@ jobs:
 
       - name: Deploy Docker Image to Azure Web App
         run: |
-          az webapp config container set \
+          az containerapp update \
             --name saleapp \
             --resource-group Porfolio-Candada \
-            --docker-custom-image-name ${{ secrets.DOCKER_USER }}/saleapp:latest \
+            --image ${{ secrets.DOCKER_USER }}/saleapp:latest
