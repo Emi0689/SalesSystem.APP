@@ -5,7 +5,7 @@ import { Sale } from '../../../../Interfaces/sale';
 
 @Component({
   selector: 'app-sale-detail-modal',
-  templateUrl: './sale-detail-modal.component.html',
+  templateUrl: './sale-details-modal.component.html',
   styleUrls: ['./sale-details-modal.component.css']
 })
 export class SaleDetailsModalComponent implements OnInit {
@@ -18,10 +18,11 @@ export class SaleDetailsModalComponent implements OnInit {
   saleDetails: SaleDetails[] = [
     {idProduct:1, productDescription:"",amount:0, priceText:"0",totalText:"0"},
   ]
-  displayedColumns: string[] = ['product', 'amount', 'price', 'total'];
+  displayedColumns: string[] = ['product', 'amount', 'price', 'totalText'];
 
 
   constructor(@Inject(MAT_DIALOG_DATA) public _sale: Sale) {
+    console.log(_sale);
     this.timestamp = _sale.timestamp;
     this.idNumber = _sale.idNumber;
     this.paymentType = _sale.paymentType;

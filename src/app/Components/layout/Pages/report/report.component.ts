@@ -6,7 +6,6 @@ import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { Report } from '../../../../Interfaces/report';
 import * as XLSX from 'xlsx';
 import * as moment from 'moment';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SaleService } from '../../../../Services/sale.service';
 import { UtilityService } from 'src/app/Reusable/utility.service';
 
@@ -41,7 +40,7 @@ export class ReportComponent implements OnInit {
 
   formGroup: FormGroup;
   reportList: Report[] = [];
-  displayedColumns: string[] = ['timestamp','idSale',  'paymentType', 'total', 'product','amount','price','productTotal'];
+  displayedColumns: string[] = ['timestamp','idNumber',  'paymentType', 'total', 'product','amount','price','totalSale'];
   dataSource = new MatTableDataSource(this.reportList);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -51,8 +50,8 @@ export class ReportComponent implements OnInit {
     private _utilityService: UtilityService,
   ) {
     this.formGroup = this.fb.group({
-      dateStart: [[new Date()], Validators.required],
-      dateEnd: [[new Date()], Validators.required]
+      dateStart: [new Date(), Validators.required],
+      dateEnd: [new Date(), Validators.required]
     })
   }
 
@@ -79,7 +78,7 @@ export class ReportComponent implements OnInit {
       next: (data) => {
 
         if (data.status) {
-
+          console.log(data);
           this.reportList = data.value;
           this.dataSource.data = data.value;
 

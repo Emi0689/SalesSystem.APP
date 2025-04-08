@@ -40,11 +40,11 @@ export class HistoryComponent implements OnInit {
   formGroup: FormGroup;
   searchItem: any[] = [
     { value: "date", description: "By dates" },
-    { value: "idnumber", description: "Sale number" }
+    { value: "idNumber", description: "Sale number" }
   ]
 
   ELEMENT_DATA: Sale[] = [];
-  displayedColumns: string[] = ['idnumber', 'timestamp', 'paymentType', 'total', 'accion'];
+  displayedColumns: string[] = ['idNumber', 'timestamp', 'paymentType', 'total', 'accion'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 

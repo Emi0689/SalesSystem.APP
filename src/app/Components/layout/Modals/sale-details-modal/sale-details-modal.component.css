@@ -1,1 +1,9 @@
 
+mat-form-field {
+  width:100%;
+  font-size: 14px;
+  margin:10px 0px;
+}
+table {
+  width:100%;
+}
