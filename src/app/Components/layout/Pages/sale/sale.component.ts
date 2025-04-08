@@ -7,8 +7,6 @@ import { Sale } from '../../../../Interfaces/sale';
 import { ProductService } from '../../../../Services/product.service';
 import { SaleService } from '../../../../Services/sale.service';
 import { UtilityService } from 'src/app/Reusable/utility.service';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 
 @Component({

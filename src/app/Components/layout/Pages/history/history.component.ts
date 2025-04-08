@@ -58,8 +58,8 @@ export class HistoryComponent implements OnInit {
     this.formGroup = this.fb.group({
       searchBy: ['date'],
       idNumber:[''],
-      dateStart: [''],
-      dateEnd: ['']
+      dateStart: [new Date()],
+      dateEnd: [new Date()]
     })
 
     this.formGroup.get('searchBy')?.valueChanges.subscribe(value => {

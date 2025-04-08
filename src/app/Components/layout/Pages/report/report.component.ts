@@ -51,8 +51,8 @@ export class ReportComponent implements OnInit {
     private _utilityService: UtilityService,
   ) {
     this.formGroup = this.fb.group({
-      dateStart: ['', Validators.required],
-      dateEnd: ['', Validators.required]
+      dateStart: [[new Date()], Validators.required],
+      dateEnd: [[new Date()], Validators.required]
     })
   }
 

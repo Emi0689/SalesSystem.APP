@@ -31,9 +31,8 @@ export class DashbordComponent implements OnInit {
           this.salesTotal = data.value.salesTotal;
           this.productTotal = data.value.productTotal;
 
-          const arrayData: any[] = data.value.ventasUltimaSemana;
-
-          const labelTemp = arrayData.map((value) => value.fecha);
+          const arrayData: any[] = data.value.weekSaleDTOs;
+          const labelTemp = arrayData.map((value) => value.date);
           const dataTemp = arrayData.map((value) => value.total);
           this.showGraph(labelTemp, dataTemp)
 

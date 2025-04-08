@@ -1,3 +1,13 @@
 table {
   width: 100%;
 }
+mat-form-field {
+  width:100%;
+  font-size: 14px;
+  margin:10px 0px;
+}
+
+mat-card-content > button
+{
+  margin-top: 20px;
+}
