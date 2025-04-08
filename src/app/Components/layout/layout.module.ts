@@ -12,7 +12,7 @@ import { SharedModule } from 'src/app/Reusable/shared/shared.module';
 import { UserModalComponent } from './Modals/user-modal/user-modal.component';
 import { MatPaginatorModule  } from '@angular/material/paginator';
 import { ProductModalComponent } from './Modals/product-modal/product-modal.component';
-import { SaleDetailModalComponent } from './Modals/sale-detail-modal/sale-detail-modal.component';
+import { SaleDetailsModalComponent } from './Modals/sale-details-modal/sale-details-modal.component';
 
 
 @NgModule({
@@ -25,7 +25,7 @@ import { SaleDetailModalComponent } from './Modals/sale-detail-modal/sale-detail
     ReportComponent,
     UserModalComponent,
     ProductModalComponent,
-    SaleDetailModalComponent
+    SaleDetailsModalComponent
   ],
   imports: [
     CommonModule,

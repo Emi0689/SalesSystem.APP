@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators  } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
-import { SaleDetail } from '../../../../Interfaces/sale-detail';
+import {  SaleDetails } from '../../../../Interfaces/saleDetails';
 import { Product } from '../../../../Interfaces/product';
 import { Sale } from '../../../../Interfaces/sale';
 import { ProductService } from '../../../../Services/product.service';
@@ -19,7 +19,7 @@ import Swal from 'sweetalert2';
 
 export class SaleComponent implements OnInit {
   products: Product[] = [];
-  ELEMENT_DATA: SaleDetail[] = [];
+  ELEMENT_DATA: SaleDetails[] = [];
   disabled: boolean = false;
 
   filteredProducts!: Product[];
@@ -108,7 +108,7 @@ export class SaleComponent implements OnInit {
 
   }
 
-  deleteProduct(item: SaleDetail) {
+  deleteProduct(item: SaleDetails) {
 
     this.totalPayment = this.totalPayment - parseFloat(item.totalText);
     this.ELEMENT_DATA = this.ELEMENT_DATA.filter(p => p.idProduct != item.idProduct)
@@ -125,9 +125,9 @@ export class SaleComponent implements OnInit {
       const saleDto: Sale = {
         paymentType: this.paymentType,
         totalText: String(this.totalPayment.toFixed(2)),
-        saleDetail: this.ELEMENT_DATA
+        saleDetails: this.ELEMENT_DATA
       }
-
+      console.log(saleDto);
       this._saleServicio.create(saleDto).subscribe({
         next: (data) => {
 

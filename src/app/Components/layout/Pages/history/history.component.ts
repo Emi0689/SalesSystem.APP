@@ -1,14 +1,11 @@
-import { Component, ChangeDetectionStrategy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource, } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import {JsonPipe} from '@angular/common';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import { MAT_DATE_FORMATS,MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MAT_DATE_FORMATS} from '@angular/material/core';
 import { Sale } from '../../../../Interfaces/sale';
-import { SaleDetailModalComponent } from '../../Modals/sale-detail-modal/sale-detail-modal.component';
+import { SaleDetailsModalComponent } from '../../Modals/sale-details-modal/sale-details-modal.component';
 import { SaleService } from '../../../../Services/sale.service';
 import { UtilityService } from 'src/app/Reusable/utility.service';
 import * as moment from 'moment';
@@ -43,11 +40,11 @@ export class HistoryComponent implements OnInit {
   formGroup: FormGroup;
   searchItem: any[] = [
     { value: "date", description: "By dates" },
-    { value: "idNumber", description: "Sale number" }
+    { value: "idnumber", description: "Sale number" }
   ]
 
   ELEMENT_DATA: Sale[] = [];
-  displayedColumns: string[] = ['idNumber', 'timestamp', 'paymentType', 'total', 'accion'];
+  displayedColumns: string[] = ['idnumber', 'timestamp', 'paymentType', 'total', 'accion'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -110,7 +107,6 @@ export class HistoryComponent implements OnInit {
         if (data.status) {
 
           this.dataSource.data = data.value;
-
         }
         else
           this._utilityService.showAlert("There is not date to show.", 'Oops!');
@@ -125,7 +121,8 @@ export class HistoryComponent implements OnInit {
 
   seeSaleDetails(_sale: Sale)
   {
-    this.dialog.open(SaleDetailModalComponent,{
+    console.log(_sale);
+    this.dialog.open(SaleDetailsModalComponent,{
       data: _sale,
       disableClose: true,
       width: '700px'

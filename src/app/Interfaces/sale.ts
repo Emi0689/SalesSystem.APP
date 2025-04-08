@@ -1,4 +1,4 @@
-import { SaleDetail } from "./sale-detail";
+import { SaleDetails } from "./saleDetails";
 
 export interface Sale {
   idSale?: number,
@@ -6,5 +6,5 @@ export interface Sale {
   paymentType?: string,
   totalText?: string,
   timestamp?: string,
-  saleDetail?:SaleDetail[]
+  saleDetails?:SaleDetails[]
 }

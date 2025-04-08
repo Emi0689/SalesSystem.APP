@@ -86,7 +86,7 @@ export class UserComponent implements OnInit, AfterViewInit {
 
   deleteUser(user: User) {
     var userCurrent = this._utilityService.getUserSession();
-    debugger;
+
     if(userCurrent.rolDescription != 'Administrador')
     {
       this._utilityService.showAlert("Only the administrator user can create or update user.", "Oops!");

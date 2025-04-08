@@ -96,7 +96,7 @@ export class ProductModalComponent  implements OnInit {
 
           if (data.status) {
             this._UtilityService.showAlert("The product was udpated successfully.", "Done!");
-            this.dialogoReferencia.close('editado')
+            this.dialogoReferencia.close('Updated')
           } else {
             this._UtilityService.showAlert("The product could not be updated.", "Error");
           }
@@ -117,7 +117,7 @@ export class ProductModalComponent  implements OnInit {
 
           if (data.status) {
             this._UtilityService.showAlert("The product was created successfully.", "Done");
-            this.dialogoReferencia.close('agregado')
+            this.dialogoReferencia.close('Created')
           } else {
             this._UtilityService.showAlert("The product could not be created.", "Error");
           }

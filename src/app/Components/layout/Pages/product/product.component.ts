@@ -67,7 +67,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
     this.dialog.open(ProductModalComponent, {
         disableClose: true
       }).afterClosed().subscribe(result => {
-
+        debugger;
+        console.log(result);
         if (result === "Created") {
           this.showProducts();
         }
@@ -79,9 +80,12 @@ export class ProductComponent implements OnInit, AfterViewInit {
       disableClose: true,
       data: product
     }).afterClosed().subscribe(result => {
-
+      debugger;
+      console.log(result);
       if (result === "Updated")
+      {
         this.showProducts();
+      }
     });
   }
 
@@ -98,7 +102,8 @@ export class ProductComponent implements OnInit, AfterViewInit {
     }).then(result => {
 
       if (result.isConfirmed) {
-
+        console.log(product);
+        console.log(product.idProduct);
         this._productService.delete(product.idProduct).subscribe({
           next: (data) => {
 
