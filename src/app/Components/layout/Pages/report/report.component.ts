@@ -40,7 +40,7 @@ export class ReportComponent implements OnInit {
 
   formGroup: FormGroup;
   reportList: Report[] = [];
-  displayedColumns: string[] = ['timestamp','idNumber',  'paymentType', 'total', 'product','amount','price','totalSale'];
+  displayedColumns: string[] = ['timestamp', 'idNumber', 'paymentType', 'total', 'product','amount','price','totalSale'];
   dataSource = new MatTableDataSource(this.reportList);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
