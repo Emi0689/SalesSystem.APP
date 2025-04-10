@@ -11,7 +11,7 @@
         <mat-grid-tile>
           <mat-form-field appearance="fill">
             <mat-label>Date Start</mat-label>
-            <input matInput [matDatepicker]="picker1" formControlName="dateStart" autocomplete="off">
+            <input matInput [matDatepicker]="picker1" formControlName="dateStart">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
@@ -23,7 +23,7 @@
 
           <mat-form-field appearance="fill">
             <mat-label>Date End</mat-label>
-            <input matInput [matDatepicker]="picker2" formControlName="dateEnd" autocomplete="off">
+            <input matInput [matDatepicker]="picker2" formControlName="dateEnd">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>

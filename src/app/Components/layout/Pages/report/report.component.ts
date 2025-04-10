@@ -64,8 +64,8 @@ export class ReportComponent implements OnInit {
 
   onSubmitForm() {
 
-    const _dateStart: any = moment(this.formGroup.value.dateStart).format('DD/MM/YYYY')
-    const _dateEnd: any = moment(this.formGroup.value.dateEnd).format('DD/MM/YYYY')
+    const _dateStart: any = moment(this.formGroup.value.dateStart).format('MM/DD/YYYY')
+    const _dateEnd: any = moment(this.formGroup.value.dateEnd).format('MM/DD/YYYY')
     if (_dateStart === "Invalid date" || _dateEnd === "Invalid date") {
       this._utilityService.showAlert("You need to add both dates.", 'Oops!');
       return;
@@ -78,7 +78,6 @@ export class ReportComponent implements OnInit {
       next: (data) => {
 
         if (data.status) {
-          console.log(data);
           this.reportList = data.value;
           this.dataSource.data = data.value;
 
