@@ -1,0 +1,1 @@
+Sales application is a full-stack portfolio project built with Angular Material. It allows users to create and edit products, simulate sales, view sales history, and generate reports and dashboards for data visualization and analysis.
