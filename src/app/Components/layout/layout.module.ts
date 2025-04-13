@@ -18,11 +18,11 @@ import { SaleDetailsModalComponent } from './Modals/sale-details-modal/sale-deta
 @NgModule({
   declarations: [
     DashbordComponent,
-    UserComponent,
-    ProductComponent,
     SaleComponent,
+    ProductComponent,
     HistoryComponent,
     ReportComponent,
+    UserComponent,
     UserModalComponent,
     ProductModalComponent,
     SaleDetailsModalComponent
