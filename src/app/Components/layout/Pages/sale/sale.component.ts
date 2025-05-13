@@ -43,7 +43,7 @@ export class SaleComponent implements OnInit {
 
     this._productServicio.getAll().subscribe({
       next: (data) => {
-        if (data.status)
+        if (data.success)
         {
           const productsFound = data.value as Product[];
           this.products = productsFound.filter(p => p.isActive == 1 && p.stock > 0);
@@ -129,7 +129,7 @@ export class SaleComponent implements OnInit {
       this._saleServicio.create(saleDto).subscribe({
         next: (data) => {
 
-          if (data.status) {
+          if (data.success) {
             this.totalPayment = 0.00;
             this.ELEMENT_DATA = [];
             this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);

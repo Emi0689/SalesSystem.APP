@@ -43,7 +43,7 @@ showLoading: boolean = false;
 
     this._userService.login(request).subscribe({
       next: (data) => {
-        if(data.status)
+        if(data.success)
         {
           this._utilityService.saveUserSession(data.value);
           this.router.navigate(["pages"]);

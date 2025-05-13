@@ -25,7 +25,7 @@ export class DashbordComponent implements OnInit {
 
     this._dashboardServicio.resume().subscribe({
       next: (data) => {
-        if (data.status) {
+        if (data.success) {
 
           this.revenuesTotal = data.value.revenuesTotal;
           this.salesTotal = data.value.salesTotal;

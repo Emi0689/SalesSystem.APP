@@ -50,7 +50,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
   showProducts() {
     this._productService.getAll().subscribe({
       next: (data) => {
-        if(data.status)
+        if(data.success)
           this.dataSource.data = data.value;
         else
           this._utilityService.showAlert("There is not product to show.", 'Oops!');
@@ -107,7 +107,7 @@ export class ProductComponent implements OnInit, AfterViewInit {
         this._productService.delete(product.idProduct).subscribe({
           next: (data) => {
 
-            if (data.status) {
+            if (data.success) {
               this._utilityService.showAlert("The product was deleted.", "Done!")
               this.showProducts();
             } else {

@@ -45,7 +45,7 @@ export class ProductModalComponent  implements OnInit {
     this._categoryServicio.getAll().subscribe({
       next: (data) => {
 
-        if (data.status) {
+        if (data.success) {
           this.categorys = data.value;
           if (this.productEdit)
             this.formProduct.patchValue({
@@ -94,7 +94,7 @@ export class ProductModalComponent  implements OnInit {
       this._productServicio.update(_product).subscribe({
         next: (data) => {
 
-          if (data.status) {
+          if (data.success) {
             this._UtilityService.showAlert("The product was udpated successfully.", "Done!");
             this.dialogoReferencia.close('Updated')
           } else {
@@ -115,7 +115,7 @@ export class ProductModalComponent  implements OnInit {
       this._productServicio.create(_product).subscribe({
         next: (data) => {
 
-          if (data.status) {
+          if (data.success) {
             this._UtilityService.showAlert("The product was created successfully.", "Done");
             this.dialogoReferencia.close('Created')
           } else {

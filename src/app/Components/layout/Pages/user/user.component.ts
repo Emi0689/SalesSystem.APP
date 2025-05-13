@@ -49,7 +49,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   showUsers() {
     this._userService.getAll().subscribe({
       next: (data) => {
-        if(data.status)
+        if(data.success)
           this.dataSource.data = data.value;
         else
           this._utilityService.showAlert("There is not user to show.", 'Oops!');
@@ -109,7 +109,7 @@ export class UserComponent implements OnInit, AfterViewInit {
           this._userService.delete(user.idUser).subscribe({
             next: (data) => {
 
-              if (data.status) {
+              if (data.success) {
                 this._utilityService.showAlert("The user was deleted.", "Done!")
                 this.showUsers();
               } else {

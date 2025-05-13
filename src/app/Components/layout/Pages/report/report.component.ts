@@ -77,7 +77,7 @@ export class ReportComponent implements OnInit {
     ).subscribe({
       next: (data) => {
 
-        if (data.status) {
+        if (data.success) {
           this.reportList = data.value;
           this.dataSource.data = data.value;
 

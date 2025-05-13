@@ -104,7 +104,7 @@ export class HistoryComponent implements OnInit {
     ).subscribe({
       next: (data) => {
 
-        if (data.status) {
+        if (data.success) {
 
           this.dataSource.data = data.value;
         }

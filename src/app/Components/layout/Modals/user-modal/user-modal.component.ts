@@ -50,7 +50,7 @@ export class UserModalComponent implements OnInit {
     this._rolServicio.getAll().subscribe({
       next: (data) => {
 
-        if (data.status) {
+        if (data.success) {
           this.Rols = data.value;
           if (this.userData)
             this.formUser.patchValue({
@@ -112,7 +112,7 @@ export class UserModalComponent implements OnInit {
         this._userServicio.update(_user).subscribe({
           next: (data) => {
 
-            if (data.status) {
+            if (data.success) {
               this._utilityService.showAlert("The user was updated successfully.", "Done!");
               this.modalCurrent.close('Updated')
             } else {
@@ -129,7 +129,7 @@ export class UserModalComponent implements OnInit {
       else {
         this._userServicio.create(_user).subscribe({
           next: (data) => {
-            if (data.status) {
+            if (data.success) {
               this._utilityService.showAlert("The user was created successfully.", "Done");
               this.modalCurrent.close('Created')
             } else {
